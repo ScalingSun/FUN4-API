@@ -17,11 +17,15 @@ namespace EFLibrary
         public void DeleteById(int Id)
         {
             var result = _db.Users.SingleOrDefault(b => b.id == Id);
-            if (result != null)
+            if (result.Active != 2)
             {
-                result.Active = 0;
-                _db.SaveChanges();
+                if (result != null)
+                {
+                    result.Active = 0;
+                    _db.SaveChanges();
+                }
             }
+           
         }
 
         public List<T> GetAll<T>() where T : class

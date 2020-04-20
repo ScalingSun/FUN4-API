@@ -71,6 +71,10 @@ namespace FUN4API.Controllers
             {
                 return "user with Id: " + Id + " does not exist.";
             }
+            if(check.Active == 2)
+            {
+                return "You cant delete the admin account.";
+            }
             user.DeleteById(Id);
             return "User with Id: " + Id + " has been removed.";
         }

@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EFLibrary.Migrations
 {
-    public partial class fix : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +14,9 @@ namespace EFLibrary.Migrations
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Amount = table.Column<decimal>(nullable: false),
-                    userID = table.Column<int>(nullable: false)
+                    userID = table.Column<int>(nullable: false),
+                    SubmittedUserID = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,7 +33,8 @@ namespace EFLibrary.Migrations
                     Password = table.Column<string>(maxLength: 200, nullable: false),
                     Wealth = table.Column<decimal>(nullable: false),
                     Active = table.Column<int>(nullable: false),
-                    EmailAddress = table.Column<string>(maxLength: 200, nullable: false)
+                    EmailAddress = table.Column<string>(maxLength: 200, nullable: false),
+                    Salt = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {

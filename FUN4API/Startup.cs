@@ -33,7 +33,7 @@ namespace FUN4API
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlServer(
-                @"Server=localhost;Database=Blogging;Integrated Security=True;Initial Catalog=FUN4; Integrated Security=SSPI");
+                @"Server=mssql.fhict.local;Database=dbi413342; User Id=dbi413342; Password=15041998Tim ");
             });
             services.AddControllers();
 
