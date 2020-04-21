@@ -52,6 +52,7 @@ namespace EFLibrary
         public void Add<T>(T thing) where T : class
         {
             Transaction transaction = thing as Transaction;
+            transaction.Date = DateTime.Now;
             _db.Transactions.Add(transaction);
             _db.SaveChanges();
         }
