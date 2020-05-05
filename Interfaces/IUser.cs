@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace Interfaces
 {
@@ -10,5 +11,6 @@ namespace Interfaces
         decimal Wealth { get; set; }
         int Active { get; set; }
         string EmailAddress { get; set; }
+        ICollection Transactions { get; set; }
     }
 }

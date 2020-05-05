@@ -22,6 +22,7 @@ namespace EFLibrary
         public string EmailAddress { get; set; }
         [MaxLength(200)]
         public string Salt { get; set; }
+        public virtual ICollection<Transaction> transactions { get; set; }
         public User()
         {
 

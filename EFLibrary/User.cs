@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,10 +42,11 @@ namespace EFLibrary
 
         public IUser GetById(int Id)
         {
-            return _db.Users.Find(Id);
+            return _db.Users.Where(b => b.id == Id).Include(b => b.transactions).FirstOrDefault();
         }
         public int GetIdByEmailAddress(string Email)
         {
+            
             return _db.Users.Where(m => m.EmailAddress == Email).Select(m => m.id).SingleOrDefault();
         }
 
@@ -52,7 +54,7 @@ namespace EFLibrary
         
         {
             IUser newversion = User as IUser;
-            var result = _db.Users.SingleOrDefault(b => b.id == Id);
+            var result = _db.Users.Include(b => b.transactions).SingleOrDefault(b => b.id == Id);
             if (result != null)
             {
                 result.Name = newversion.Name;
@@ -60,6 +62,7 @@ namespace EFLibrary
                 result.EmailAddress = newversion.EmailAddress;
                 result.Wealth = newversion.Wealth;
                 result.Active = newversion.Active;
+                result.transactions = newversion.Transactions;
                 _db.SaveChanges();
             }
         }
