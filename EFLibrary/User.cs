@@ -62,7 +62,6 @@ namespace EFLibrary
                 result.EmailAddress = newversion.EmailAddress;
                 result.Wealth = newversion.Wealth;
                 result.Active = newversion.Active;
-                result.transactions = newversion.Transactions;
                 _db.SaveChanges();
             }
         }
