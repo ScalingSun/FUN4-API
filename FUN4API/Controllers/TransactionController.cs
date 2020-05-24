@@ -63,5 +63,20 @@ namespace FUN4API.Controllers
             CRUDTransaction crud = new CRUDTransaction(_Db);
             return JsonSerializer.Serialize(crud.GetAll<Transaction>());
         }
+        [HttpPost("multiple")]
+        public string AddMultiple([FromBody] List<TransactionModel> data)
+        {
+            List<TransactionModel> result = new List<TransactionModel>();
+            foreach (TransactionModel model in data)
+            {
+                if (model.Id != 0 || model.Amount != 0)
+                {
+                    result.Add(model);
+                }
+            }
+            CRUDTransaction crud = new CRUDTransaction(_Db);
+            crud.AddMultiple(result);
+            return "Transactions have been added.";
+        }
     }
 }

@@ -35,5 +35,14 @@ namespace FUN4API
             Transaction thing = new Transaction(model.Id,model.Amount,model.UserID,model.SubmittedUserID,model.Date);
             transaction.Add(thing);
         }
+        public void AddMultiple(List<TransactionModel> data)
+        {
+            List<Transaction> transactions = new List<Transaction>();
+            foreach(TransactionModel model in data)
+            {
+                transactions.Add(new Transaction( model.Amount *-1, model.Id, model.SubmittedUserID, model.Date));
+            }
+            transaction.AddMultiple(transactions);
+        }
     }
 }

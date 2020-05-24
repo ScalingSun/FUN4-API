@@ -24,5 +24,12 @@ namespace EFLibrary
             SubmittedUserID = submittedUserID;
             Date = date;
         }
+        public Transaction(decimal amount, int userID, int submittedUserID, DateTime date)
+        {
+            Amount = amount;
+            this.userID = userID;
+            SubmittedUserID = submittedUserID;
+            Date = date;
+        }
     }
 }

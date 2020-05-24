@@ -56,5 +56,14 @@ namespace EFLibrary
             _db.Transactions.Add(transaction);
             _db.SaveChanges();
         }
+        public void AddMultiple(List<Transaction> thing)
+        {
+            foreach(Transaction transaction in thing)
+            {
+                transaction.Date = DateTime.Now;
+            }
+            _db.Transactions.AddRange(thing);
+            _db.SaveChanges();
+        }
     }
 }
